@@ -104,6 +104,8 @@ function displayCoinsCards(search) {
         `;
     }
     pageHtmlContent.innerHTML = html;
+
+    coinsWithInfo.forEach((coin) => addMoreInfo(coin, true));
 }
 
 function drawBigLoader() {
@@ -127,27 +129,34 @@ function drawSmallLoader(btn) {
 
 let clicked = false;
 
-async function addMoreInfo(id) {
+const coinsWithInfo = [];
+async function addMoreInfo(id, drawOnly) {
     const moreInfoBtn = document.getElementById(`moreInfoBtn${id}`);
     const btnOpen = moreInfoBtn.getAttribute('open');
     if (!btnOpen) {
+        if (!drawOnly) {
+            coinsWithInfo.push(id);
+        }
         const btnOpening = moreInfoBtn.getAttribute('opening');
         if (!btnOpening) {
             moreInfoBtn.setAttribute('opening', 'true');
-            let timeout = 1000;
             if (!getSessionStorage(id)) {
                 drawSmallLoader(moreInfoBtn);
-            } else {
-                timeout = 0;
             }
-            setTimeout(async () => {
-                await cardInfo(id);
-                moreInfoBtn.innerText = 'Show Less';
-            }, timeout);
+
+            await cardInfo(id);
+            moreInfoBtn.innerText = 'Show Less';
+
             moreInfoBtn.removeAttribute('opening');
             moreInfoBtn.setAttribute('open', 'true');
         }
     } else {
+        if (!drawOnly) {
+            coinsWithInfo.splice(
+                coinsWithInfo.findIndex((coin) => coin === id),
+                1
+            );
+        }
         moreInfoBtn.removeAttribute('open');
         moreInfoBtn.innerText = 'Show More';
         hideMoreInfo(id);
@@ -187,10 +196,7 @@ function toggleList(id) {
         selectedCoins.push(id);
     } else {
         selectedCoins.splice(coinIndex, 1);
-        // if (modalBody.classList.contains('show')) {
-        // }
     }
-
     if (selectedCoins.length > 5) {
         $('#myModal').modal('show');
         modalBody.innerHTML = '';
