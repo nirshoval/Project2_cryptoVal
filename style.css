@@ -1,0 +1,42 @@
+.centerHeader{
+    display: flexbox;
+    justify-content: center;
+    text-align: center;
+}
+
+.title{
+    text-decoration: double;
+    font-size: 4em;
+}
+
+.parallax {
+    /* The image used */
+    background-image: url(assets/images/background1.jpg);
+  
+    /* Set a specific height */
+    min-height: 500px;
+    width: 100%;
+    height: 100vh;
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+nav {
+    width: 70%;
+    display: flex;
+    margin: auto;
+    border-radius: 20px;
+}
+
+.moreInfo{
+    display: none;
+}
+
+.card.show-more-info .moreInfo{
+    display: inline;
+}
+
