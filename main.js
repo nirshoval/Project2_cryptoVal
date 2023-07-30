@@ -136,7 +136,7 @@ function displayCoinsCards(search) {
         }
         foundCoins = true;
         html += `
-            <div id=${coin.id} class="card mb-3 mt-2 pt-2 col-12 col-md-4 col-lg-3 col-xl-2">
+            <div id="${coin.id}" class="card mb-3 mt-2 pt-2 col-sm-12 col-md-4 col-lg-3 col-xl-2">
                 <div class="form-check form-switch position-relative mt-2 me-2">
                     <input class="form-check-input position-absolute top-0 end-0" type="checkbox" ${selectedCoins.includes(coin.id) ? 'checked' : ''}
                     onchange="toggleList(\'${coin.id}\')" role="switch"id="${coin.id}Toggle">
@@ -147,9 +147,7 @@ function displayCoinsCards(search) {
                             <h5 class="card-title text-center">${coin.symbol}</h5>
                             <p class="card-text text-center">${coin.name}</p>
                             <div class="text-center">
-                                <button type="button" class="btn btn-primary btn-sm mt-1" id="moreInfoBtn${coin.id}" onclick="addMoreInfo(\'${
-            coin.id
-        }\')">
+                                <button type="button" class="btn btn-primary btn-sm mt-1" id="moreInfoBtn${coin.id}" onclick="addMoreInfo(\'${coin.id}\')">
                                     Show More
                                 </button>
                             </div>
@@ -265,6 +263,7 @@ function toggleList(id) {
             const coinElement = document.getElementById(coin);
             const coinClone = coinElement.cloneNode(true);
             modalBody.appendChild(coinClone);
+            $('.btn-sm').hide();
         });
         return;
     } else {

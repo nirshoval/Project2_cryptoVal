@@ -39,16 +39,21 @@ nav {
 
 }
 
+#pageHtmlContent{
+    justify-content: center;
+    align-items: center;
+}
+
 
 .card {
-    width: 200px;
+    width: 190px;
     max-width: 230px;
     max-height: fit-content;
     margin: 1%;
 }
 
 .card-text{
-    max-width: 180px;
+    max-width: 200px;
     margin: auto;
     text-align: center;
 }
@@ -62,3 +67,35 @@ nav {
         justify-content: center;
     }
 }
+
+.modal-title{
+    margin: auto;
+    padding-left: 20%;
+}
+
+
+#modalBody > .card{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 1px red;
+    width: 18%;
+    height: 250px;
+    font-size: small;
+}
+
+#modalBody > .card:last-of-type{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    margin: auto;
+    width: 22%;
+    border: solid 2px blue;
+}
+
+.modal-content{
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+}
+
