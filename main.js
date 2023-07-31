@@ -143,15 +143,17 @@ function displayCoinsCards(search) {
                     <label class="form-check-label position-absolute top-0 end-0" for="flexSwitchCheckDefault"></label>
                 </div>
                         <img src="${coin.image}" class="img-fluid rounded-circle coinImages" alt="${coin.name}">
-                        <div class="card-body">
+                        <div id="${coin.id}CardBody" class="card-body">
                             <h5 class="card-title text-center">${coin.symbol}</h5>
                             <p class="card-text text-center">${coin.name}</p>
-                            <div class="text-center">
-                                <button type="button" class="btn btn-primary btn-sm mt-1" id="moreInfoBtn${coin.id}" onclick="addMoreInfo(\'${coin.id}\')">
+                            <div id="${coin.id}MoreInfoButton" class="text-center">
+                                <button type="button" class="btn btn-primary btn-sm mt-1" id="moreInfoBtn${coin.id}" onclick="addMoreInfo(\'${
+            coin.id
+        }\')">
                                     Show More
                                 </button>
                             </div>
-                                <div class="collapse mt-2 pt-3 border-top border-bottom" id="Collapsed${coin.id}">
+                                <div id="Collapsed${coin.id}" class="collapse mt-2 pt-3 border-top border-bottom">
                                 </div>
                         </div>
                 </div>
@@ -262,8 +264,24 @@ function toggleList(id) {
         selectedCoins.forEach((coin) => {
             const coinElement = document.getElementById(coin);
             const coinClone = coinElement.cloneNode(true);
+
+            for (let i = 0; i < coinClone.children.length; i++) {
+                const cardChild = coinClone.children[i];
+
+                if (`${coin}CardBody` === cardChild.id) {
+                    for (let j = 0; j < cardChild.childNodes.length; j++) {
+                        const cardBodyChild = cardChild.childNodes[j];
+
+                        if (`${coin}MoreInfoButton` === cardBodyChild.id) {
+                            cardChild.removeChild(cardBodyChild);
+                        } else if (`Collapsed${coin}` === cardBodyChild.id) {
+                            cardChild.removeChild(cardBodyChild);
+                        }
+                    }
+                }
+            }
+
             modalBody.appendChild(coinClone);
-            $('.btn-sm').hide();
         });
         return;
     } else {
