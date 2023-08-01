@@ -72,10 +72,10 @@ function displayAbout() {
                 </div>
                 <h6 class="contactMeHeader">Contact Us:</h6>
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item"><i class="fa-solid fa-user" style="color: #186bfb;"></i> 22</li>
-                  <li class="list-group-item"><i class="fa-solid fa-house" style="color: #186bfb;"></i> Israel</li>
-                  <li class="list-group-item"><i class="fa-solid fa-envelope" style="color: #186bfb;"></i> nirsho@gmail.com</li>
-                  <li class="list-group-item"><i class="fa-solid fa-phone" style="color: #186bfb;"></i> 0505969009</li>
+                  <li class="list-group-item"><i class="fa-solid fa-user" style="color: #186bfb;"></i> Nir Shoval, age: 22</li>
+                  <li class="list-group-item"><i class="fa-solid fa-house" style="color: #186bfb;"></i> Qiryat Ono, Israel</li>
+                  <li class="list-group-item"><i class="fa-solid fa-envelope" style="color: #186bfb;"></i> nirshoval2@gmail.com</li>
+                  <li class="list-group-item"><i class="fa-solid fa-phone" style="color: #186bfb;"></i> 050-596-9009</li>
                 </ul>
             </div>
         </div>
@@ -191,7 +191,7 @@ function displayCoinsCards(search) {
     if (!foundCoins) {
         drawBigLoader();
         setTimeout(() => {
-            pageHtmlContent.innerHTML = '<h1>Coins not found..</h1>';
+            pageHtmlContent.innerHTML = '<h1 class="searchNotFoundMessage">Coins not found..</h1>';
         }, 1000);
     } else {
         pageHtmlContent.innerHTML = html;

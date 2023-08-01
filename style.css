@@ -64,6 +64,14 @@ nav {
     text-align: center;
 }
 
+.searchNotFoundMessage{
+    text-align: center;
+    align-content: center;
+    font-size: xx-large;
+    margin-top: 50px;
+
+}
+
 @media screen and (max-width: 767px) {
     .card-container {
         display: flex;
@@ -163,4 +171,6 @@ font-size: large;
     text-align: center;
     margin-top: 30px;
 }
+
+
 
