@@ -7,7 +7,7 @@ const REFETCH_INTERVAL = 120000; // 2 minutes
 const init = () => {
     // Initialize the webpage when the DOM content is loaded.
 
-    // Get DOM elements by their IDs:
+    // Get DOM elements by their ID's:
     const homeLink = document.getElementById('homeLink');
     const iconNavBar = document.getElementById('iconNavBar');
     const reportsLink = document.getElementById('reportsLink');
@@ -39,9 +39,13 @@ function displayReports() {
     drawBigLoader();
     setTimeout(() => {
         pageHtmlContent.innerHTML = `
+        <div class="comingSoonPage">
         <h1>Coming Soon...</h1>
         <br>
         <h2>(Page under construction)</h2>
+        <br>
+        <i class="fa-solid fa-person-digging fa-2xl"></i>
+        </div>
         `;
     }, 1000);
 }
@@ -51,7 +55,31 @@ function displayAbout() {
     pageHtmlContent.innerHTML = '';
     drawBigLoader();
     setTimeout(() => {
-        pageHtmlContent.innerHTML = '<h1>About...</h1>';
+        pageHtmlContent.innerHTML = `
+        <div class = "container aboutMe">
+            <div class="card aboutCard" >
+                <img src="assets/images/IMG_8168.JPG" class="card-img-top" alt="myImage">
+                <div class="card-body">
+                    <h5>Nir Shoval</h5>
+                    <h6 class="aboutMeSecondHeader">FS Web Developer</h6>
+                    <p class="card-text aboutMeParagraphText">
+                    <i class="fa-solid fa-circle" style="color: #186bfb;"></i>My project is a web application called "CryptoVal" which serves as a cryptocurrency comparison website.
+                    <br>
+                    <i class="fa-solid fa-circle" style="color: #186bfb;"></i>The application allows users to view information about various cryptocurrencies.
+                    <br>
+                    <i class="fa-solid fa-circle" style="color: #186bfb;"></i>Overall, CryptoVal provides a user-friendly interface for exploring and comparing cryptocurrency data.
+                    </p>
+                </div>
+                <h6 class="contactMeHeader">Contact Us:</h6>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><i class="fa-solid fa-user" style="color: #186bfb;"></i> 22</li>
+                  <li class="list-group-item"><i class="fa-solid fa-house" style="color: #186bfb;"></i> Israel</li>
+                  <li class="list-group-item"><i class="fa-solid fa-envelope" style="color: #186bfb;"></i> nirsho@gmail.com</li>
+                  <li class="list-group-item"><i class="fa-solid fa-phone" style="color: #186bfb;"></i> 0505969009</li>
+                </ul>
+            </div>
+        </div>
+        `;
     }, 1000);
 }
 
@@ -136,7 +164,7 @@ function displayCoinsCards(search) {
         }
         foundCoins = true;
         html += `
-            <div id="${coin.id}" class="card mb-3 mt-2 pt-2 col-sm-12 col-md-4 col-lg-3 col-xl-2">
+            <div id="${coin.id}" class="card coinCardSize mb-3 mt-2 pt-2 col-sm-12 col-md-4 col-lg-3 col-xl-2">
                 <div class="form-check form-switch position-relative mt-2 me-2">
                     <input class="form-check-input position-absolute top-0 end-0" type="checkbox" ${selectedCoins.includes(coin.id) ? 'checked' : ''}
                     onchange="toggleList(\'${coin.id}\')" role="switch"id="${coin.id}Toggle">
@@ -251,6 +279,8 @@ function hideMoreInfo(id) {
 
 const selectedCoins = [];
 function toggleList(id) {
+    const modalExitBtn = document.getElementById("modalExitBtn");
+    modalExitBtn.addEventListener("click",closePopUp);
     const modalBody = document.getElementById('modalBody');
     const coinIndex = selectedCoins.findIndex((coin) => coin === id);
     if (coinIndex === -1) {
@@ -264,14 +294,11 @@ function toggleList(id) {
         selectedCoins.forEach((coin) => {
             const coinElement = document.getElementById(coin);
             const coinClone = coinElement.cloneNode(true);
-
             for (let i = 0; i < coinClone.children.length; i++) {
                 const cardChild = coinClone.children[i];
-
                 if (`${coin}CardBody` === cardChild.id) {
                     for (let j = 0; j < cardChild.childNodes.length; j++) {
                         const cardBodyChild = cardChild.childNodes[j];
-
                         if (`${coin}MoreInfoButton` === cardBodyChild.id) {
                             cardChild.removeChild(cardBodyChild);
                         } else if (`Collapsed${coin}` === cardBodyChild.id) {

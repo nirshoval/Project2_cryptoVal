@@ -11,7 +11,7 @@
 
 .parallax {
     /* The image used */
-    background-image: url(assets/images/background1.jpg);
+    background-image: url(assets/images/background3.jpg);
     /* Set a specific height */
     min-height: 500px;
     width: 100%;
@@ -47,13 +47,16 @@ nav {
 
 .card {
     width: 190px;
-    max-width: 230px;
     max-height: fit-content;
     margin: 1%;
+    min-height: 280px;
+}
+
+.coinCardSize{
+    width: 190px;
 }
 
 .card-text{
-    max-width: 200px;
     margin: auto;
     text-align: center;
 }
@@ -96,6 +99,68 @@ nav {
 .modal-content{
     display: flex;
     justify-content: center;
-    /* align-items: center; */
+}
+
+.aboutMe{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.aboutCard {
+    width: 400px;
+}
+
+.aboutCard > img { 
+    border-radius: 80%;
+    padding: 20px;
+}
+
+
+.card-body{
+    display: flex;
+    justify-content: center;
+    align-content: center; 
+    flex-direction: column;
+}
+
+.card-body > h5,h6 {
+    margin: auto;
+
+}
+
+.aboutMeSecondHeader{
+    padding-bottom: 15px;
+}
+.card-body > h5 {
+    font-size: x-large;
+}
+.card-body > h6 {
+border-bottom: 1px solid lightskyblue;
+font-size: large;
+}
+
+.aboutMeParagraphText{
+    padding-top: 10px;
+    text-align: start;
+}
+
+.contactMeHeader{
+    border-top: 1px solid lightskyblue;
+    padding-top: 20px;
+}
+
+.fa-circle{
+    margin-right: 5px;
+    display: inline-flex;
+}
+
+.comingSoonPage{
+    display: flex;
+    justify-content: center;
+    align-content: center; 
+    flex-direction: column;
+    text-align: center;
+    margin-top: 30px;
 }
 
