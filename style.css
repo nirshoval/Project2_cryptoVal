@@ -122,7 +122,7 @@ a{
 }
 /* ---------------------------------------------------------------- */
 
-
+/* General */
 #pageHtmlContent{
     justify-content: center;
     align-items: center;
@@ -134,6 +134,7 @@ a{
     align-content: center;
     font-size: xx-large;
     margin-top: 50px;
+    font-family: KdamThmorPro;
 }
 
 @media screen and (max-width: 990px) {
@@ -153,6 +154,7 @@ a{
 .modal-title{
     margin: auto;
     padding-left: 20%;
+    font-family: KdamThmorPro;
 }
 
 #modalBody > .card{
@@ -177,6 +179,7 @@ a{
 .modal-content{
     display: flex;
     justify-content: center;
+    font-family: Oswald-VariableFont;
 }
 /* ---------------------------------------------------------------- */
 
