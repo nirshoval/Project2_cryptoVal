@@ -39,14 +39,14 @@ function displayReports() {
     drawBigLoader();
     setTimeout(() => {
         pageHtmlContent.innerHTML = `
-        <div class="comingSoonPage">
-        <h1>Coming Soon...</h1>
-        <br>
-        <h2>(Page under construction)</h2>
-        <br>
-        <i class="fa-solid fa-person-digging fa-2xl"></i>
-        </div>
-        `;
+                                   <div class="comingSoonPage">
+                                           <h1>Coming Soon...</h1>
+                                       <br>
+                                           <h2>(Page under construction)</h2>
+                                       <br>
+                                           <i class="fa-solid fa-person-digging fa-2xl"></i>
+                                   </div>  
+                                   `;
     }, 1000);
 }
 
@@ -72,7 +72,7 @@ function displayAbout() {
                 </div>
                 <h6 class="contactMeHeader">Contact Us:</h6>
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item"><i class="fa-solid fa-user" style="color: #186bfb;"></i> Nir Shoval, age: 22</li>
+                  <li class="list-group-item"><i class="fa-solid fa-user" style="color: #186bfb;"></i> Full name: Nir Shoval, Age: 22</li>
                   <li class="list-group-item"><i class="fa-solid fa-house" style="color: #186bfb;"></i> Qiryat Ono, Israel</li>
                   <li class="list-group-item"><i class="fa-solid fa-envelope" style="color: #186bfb;"></i> nirshoval2@gmail.com</li>
                   <li class="list-group-item"><i class="fa-solid fa-phone" style="color: #186bfb;"></i> 050-596-9009</li>
@@ -279,8 +279,8 @@ function hideMoreInfo(id) {
 
 const selectedCoins = [];
 function toggleList(id) {
-    const modalExitBtn = document.getElementById("modalExitBtn");
-    modalExitBtn.addEventListener("click",closePopUp);
+    const modalExitBtn = document.getElementById('modalExitBtn');
+    modalExitBtn.addEventListener('click', closePopUp);
     const modalBody = document.getElementById('modalBody');
     const coinIndex = selectedCoins.findIndex((coin) => coin === id);
     if (coinIndex === -1) {
